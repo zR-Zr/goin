@@ -1,0 +1,23 @@
+# 忽略编译生成的文件
+bin/
+pkg/
+
+# 忽略编辑器临时文件
+*.swp
+*.swo
+*~
+
+# 忽略操作系统生成的文件
+.DS_Store
+Thumbs.db
+
+# 忽略 Go 语言特定的文件
+vendor/
+.env  // 忽略环境变量文件
+
+# 忽略测试数据或日志文件
+test/data/
+logs/
+
+# 忽略vscode生成的.history 目录
+.history
