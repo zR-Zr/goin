@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/zR-Zr/goin/interfaces"
-	"github.com/zR-Zr/goin/pkg/ztools"
+	"github.com/zR-Zr/goin/ztools"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
