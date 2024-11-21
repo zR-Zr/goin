@@ -45,7 +45,7 @@ func (l *zlogger) Panic(msg string, kAvs ...interface{}) {
 	l.sugger.Panicw(msg, kAvs...)
 }
 
-func CreateJsonLogger(opts ...Option) (Logger, error) {
+func CreateJsonLogger(opts ...Option) (interfaces.Logger, error) {
 	opt := &option{level: zapcore.InfoLevel, fields: make(map[string]string)}
 	for _, opFunc := range opts {
 		opFunc(opt)
