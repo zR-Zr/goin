@@ -4,6 +4,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/zR-Zr/goin/interfaces"
 	"github.com/zR-Zr/goin/pkg/ztools"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
@@ -14,16 +15,7 @@ var (
 	sugger *zap.SugaredLogger
 )
 
-type Logger interface {
-	Sync() error
-	Info(msg string, kAvs ...interface{})
-	Debug(msg string, kAvs ...interface{})
-	Warn(msg string, kAvs ...interface{})
-	Error(msg string, kAvs ...interface{})
-	Panic(msg string, kAvs ...interface{})
-}
-
-var _ Logger = (*zlogger)(nil)
+var _ interfaces.Logger = (*zlogger)(nil)
 
 type zlogger struct {
 	sugger *zap.SugaredLogger
