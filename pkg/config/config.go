@@ -10,7 +10,7 @@ import (
 
 // Config 框架配置结构体
 type Config struct {
-	AppName string `mapstructure:"app_name`
+	AppName string `mapstructure:"app_name"`
 	HTTP    struct {
 		Addr         string        `mapstructure:"addr"`
 		ReadTimeout  time.Duration `mapstructure:"read_timeout"`
