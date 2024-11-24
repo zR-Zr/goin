@@ -5,9 +5,21 @@ import (
 	"runtime/debug"
 
 	"github.com/gin-gonic/gin"
+
 	"github.com/zR-Zr/goin/interfaces"
 	"github.com/zR-Zr/goin/pkg/zerrors"
 )
+
+type Middleware func(HandlerFunc) HandlerFunc
+
+func Chain(outer Middleware, others ...Middleware) Middleware {
+	return func(next HandlerFunc) HandlerFunc {
+		for i := len(others) - 1; i >= 0; i-- {
+			next = others[i](next)
+		}
+		return outer(next)
+	}
+}
 
 func ReplaceContextMiddleware(logger interfaces.Logger) gin.HandlerFunc {
 	return func(c *gin.Context) {

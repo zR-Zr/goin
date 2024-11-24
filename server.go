@@ -11,26 +11,37 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/zR-Zr/goin/interfaces"
-	"github.com/zR-Zr/goin/pkg/zlog"
+	"github.com/zR-Zr/goin/pkg/config"
+	"github.com/zR-Zr/goin/pkg/config/logger"
 )
 
 type Server struct {
+	cfg    *config.Config
 	engine *gin.Engine
 	router *Router
 	logger interfaces.Logger
 }
 
-func New() *Server {
-	// 初始化日志
-	var err error
-	var logger interfaces.Logger
+// func NewServer(cfg *config.Config) *Server {
+// 	gin.SetMode(gin.ReleaseMode)
 
-	logger, err = zlog.CreateLogger(
-		zlog.WithLevel(zlog.DebugLevel),
-		zlog.WithOutputInConsole(),
-		zlog.WithSeparateErrorFile("error.log", 100, 30, 30),
-		// zlog.WithFile("logs.log", 100, 30, 30),
-	)
+// 	engine := gin.New()
+// 	r := NewRouter(engine)
+
+// 	return &Server{
+// 		cfg:    cfg,
+// 		router: r,
+// 	}
+// }
+
+func NewServer(configFile string) *Server {
+
+	cfg, err := config.LoadConfig(configFile)
+	if err != nil {
+		panic(err)
+	}
+
+	logger, err := logger.InitLogger(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -44,6 +55,7 @@ func New() *Server {
 	router := NewRouter(engine)
 
 	return &Server{
+		cfg:    cfg,
 		engine: engine,
 		router: router,
 		logger: logger,
