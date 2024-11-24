@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/zR-Zr/goin/pkg/config"
+	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )

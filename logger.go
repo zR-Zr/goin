@@ -9,7 +9,7 @@ var Log interfaces.Logger
 
 func InitLog(opts ...zlog.Option) {
 	var err error
-	Log, err = zlog.CreateJsonLogger(opts...)
+	Log, err = zlog.CreateLogger(opts...)
 	if err != nil {
 		panic(err)
 	}

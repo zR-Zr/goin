@@ -25,11 +25,11 @@ func New() *Server {
 	var err error
 	var logger interfaces.Logger
 
-	logger, err = zlog.CreateJsonLogger(
+	logger, err = zlog.CreateLogger(
 		zlog.WithLevel(zlog.DebugLevel),
 		zlog.WithOutputInConsole(),
 		zlog.WithSeparateErrorFile("error.log", 100, 30, 30),
-		zlog.WithFile("logs.log", 100, 30, 30),
+		// zlog.WithFile("logs.log", 100, 30, 30),
 	)
 	if err != nil {
 		panic(err)

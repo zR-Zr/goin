@@ -34,9 +34,14 @@ type Config struct {
 	} `mapstructure:"database"`
 
 	Logger struct {
-		Level    string `mapstructure:"level"`
-		Output   string `mapstructure:"output"`
-		FielPath string `mapstructure:"filepath"`
+		Level         string   `mapstructure:"level"`
+		Output        []string `mapstructure:"output"` // 支持多个输出目标
+		FielPath      string   `mapstructure:"filepath"`
+		ErrorFilePath string   `mapstructure:"error_filepath"` // 单独的错误日志
+		MaxSize       int      `mapstructure:"max_size"`
+		MaxBackups    int      `mapstructure:"max_backups"`
+		MaxAge        int      `mapstructure:"max_age"`
+		RemoteAddr    string   `mapstructure:"remote_addr"` // 远程日志服务器地址
 	} `mapstructure:"logger"`
 
 	Cache struct {
