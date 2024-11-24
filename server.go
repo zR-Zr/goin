@@ -63,9 +63,16 @@ func NewServer(configFile string) *Server {
 
 }
 
-func (s *Server) Run(addr string) {
+func (s *Server) Run(addr ...string) {
+	var useAddr string
+	if len(addr) > 0 {
+		useAddr = addr[0]
+	} else {
+		useAddr = s.cfg.HTTP.Addr
+	}
+
 	srv := &http.Server{
-		Addr:    addr,
+		Addr:    useAddr,
 		Handler: s.engine,
 	}
 

@@ -3,7 +3,7 @@ package main
 import "github.com/zR-Zr/goin"
 
 func main() {
-	server := goin.New()
+	server := goin.NewServer("./config.yaml")
 
 	api := server.Group("/api")
 	api.GET("/hello", func(c *goin.Context) {
