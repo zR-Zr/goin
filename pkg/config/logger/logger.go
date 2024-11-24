@@ -5,7 +5,7 @@ import (
 
 	"github.com/zR-Zr/goin/interfaces"
 	"github.com/zR-Zr/goin/pkg/config"
-	"github.com/zR-Zr/goin/zlog"
+	"github.com/zR-Zr/goin/pkg/zlog"
 )
 
 func InitLogger(cfg *config.Config) (logger interfaces.Logger, err error) {

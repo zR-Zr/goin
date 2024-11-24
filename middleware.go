@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/zR-Zr/goin/interfaces"
-	"github.com/zR-Zr/goin/zerrors"
+	"github.com/zR-Zr/goin/pkg/zerrors"
 )
 
 func ReplaceContextMiddleware(logger interfaces.Logger) gin.HandlerFunc {

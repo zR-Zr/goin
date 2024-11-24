@@ -11,7 +11,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/zR-Zr/goin/interfaces"
-	"github.com/zR-Zr/goin/zlog"
+	"github.com/zR-Zr/goin/pkg/zlog"
 )
 
 type Server struct {
