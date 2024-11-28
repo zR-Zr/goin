@@ -9,8 +9,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
-	
+
 	"github.com/zR-Zr/goin/interfaces"
+	"github.com/zR-Zr/goin/pkg/auth"
 )
 
 type Context struct {
@@ -30,6 +31,23 @@ func NewContext(c *gin.Context, logger interfaces.Logger) *Context {
 		Logger:    logger,
 		requestID: requestID,
 	}
+}
+
+func (c *Context) SetUser(user *auth.JWTUser) {
+	c.Context.Set("x-jwt-user", user)
+}
+
+func (c *Context) GetUser() *auth.JWTUser {
+	user, exists := c.Context.Get("x-jwt-user")
+	if exists {
+		return user.(*auth.JWTUser)
+	} else {
+		return nil
+	}
+}
+
+func (c *Context) Next() {
+	c.Context.Next()
 }
 
 // QueryString String 获取请求参数 ?username=xxx

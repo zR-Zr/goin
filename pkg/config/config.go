@@ -44,6 +44,18 @@ type Config struct {
 		RemoteAddr    string   `mapstructure:"remote_addr"` // 远程日志服务器地址
 	} `mapstructure:"logger"`
 
+	JWT struct {
+		Secret          string        `mapstructure:"secret"`
+		AccessTokenExp  time.Duration `mapstructure:"access_token_exp"`
+		RefreshTokenExp time.Duration `mapstructure:"refresh_token_exp"`
+	} `mapstructure:"jwt"`
+
+	Redis struct {
+		Addr     string `mapstructure:"addr"`
+		Password string `mapstructure:"password"`
+		DB       int    `mapstructure:"db"`
+	} `mapstructure:"redis"`
+
 	Cache struct {
 		Type     string `mapstructure:"type"`
 		Addr     string `mapstructure:"addr"`
